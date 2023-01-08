@@ -1,5 +1,3 @@
-# Implement Linear Regression for Predicting House Prices 
-
 import matplotlib.pyplot as mtp  
 import pandas as pd  
 import numpy as np
@@ -41,7 +39,6 @@ mtp.title("Area  vs Price (Test Dataset)")
 # mtp.xlabel("Area of Houses ")  
 # mtp.ylabel("Prices(In Rupees)")  
 mtp.show()    
-
 
 # Predict Price of Particular House 
 new_price_pred = regressor.predict([[1500]])
