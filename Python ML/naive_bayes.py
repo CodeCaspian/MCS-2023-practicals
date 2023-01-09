@@ -1,3 +1,4 @@
+#x=[2,3] y=[4] Social Network
 from sklearn.datasets import load_iris
 iris = load_iris()
 X = iris.data
