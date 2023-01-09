@@ -15,11 +15,9 @@ regressor = DecisionTreeRegressor(random_state=0)
 regressor.fit(x_train, y_train)
 
 pred = regressor.predict(x_test)
-print('Pred x-test',pred)
+
 from sklearn import metrics
-
 r_square = metrics.r2_score(y_test,pred)
-
 print('Accuracy of Model is ',r_square)
 
 new_price_pred = regressor.predict([[6.5]])
