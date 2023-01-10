@@ -1,23 +1,31 @@
-import numpy as np 
-import matplotlib.pyplot as plt 
-import pandas as pd 
+import numpy as np  
+import matplotlib.pyplot as plt  
+import pandas as pd  
 
-df = pd.read_csv('Position_Salaries.csv') 
-x = df.iloc[:, 1:2].values 
-y = df.iloc[:,2:].values
+data_set= pd.read_csv(r"C:\Users\A\Downloads\Position_Salaries - Position_Salaries.csv")  
 
-from sklearn.model_selection import train_test_split 
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3,random_state=None) 
+x = data_set.iloc[:, [1]].values
+y = data_set.iloc[:, -1].values 
 
-from sklearn import svm 
-clf = svm.SVC(kernel='linear') # Linear Kernel
-clf.fit(X_train, y_train) 
+from sklearn.model_selection import train_test_split  
+x_train, x_test, y_train, y_test= train_test_split(x, y, test_size= 0.2, random_state=None)
 
-#OR           
-# from sklearn.svm import SVR 
-# clf = SVR(kernel = 'rbf') 
+from sklearn.preprocessing import StandardScaler    
+st_x= StandardScaler()    
+x_train= st_x.fit_transform(x_train)    
+x_test= st_x.transform(x_test) 
 
-y_pred = clf.predict(X_test) 
+from sklearn.svm import SVC  
+classifier = SVC(kernel='linear', random_state=0)  
+classifier.fit(x_train, y_train)  
 
-from sklearn import metrics 
-print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+y_pred = classifier.predict(x_test) 
+x_pred = classifier.predict(x_train)
+
+print(classifier.predict([[16]]))
+
+plt.scatter(x_train, y_train, color = 'red') 
+plt.plot(x_train, regressor.predict(x_train), color = 'blue') 
+plt.xlabel('Position level') 
+plt.ylabel('Salary') 
+plt.show()
