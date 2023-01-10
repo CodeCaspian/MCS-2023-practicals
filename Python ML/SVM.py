@@ -10,11 +10,6 @@ y = data_set.iloc[:, -1].values
 from sklearn.model_selection import train_test_split  
 x_train, x_test, y_train, y_test= train_test_split(x, y, test_size= 0.2, random_state=None)
 
-from sklearn.preprocessing import StandardScaler    
-st_x= StandardScaler()    
-x_train= st_x.fit_transform(x_train)    
-x_test= st_x.transform(x_test) 
-
 from sklearn.svm import SVC  
 classifier = SVC(kernel='linear', random_state=0)  
 classifier.fit(x_train, y_train)  
